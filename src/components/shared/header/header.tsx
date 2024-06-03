@@ -96,5 +96,114 @@ const Header = ({
     const main = document.querySelector("main");
     const footer = document.querySelector("footer");
     const body = document.body;
-  })
-}
+
+    if (size <= 649) {
+      if (menuToggle) {
+        main.style.display = "none";
+        footer.style.display = "none";
+      } else {
+        main.style.display = "block";
+        footer.style.display = "block";
+      }
+    }
+
+    if (cartToggle) {
+      body.style.overflow = "hidden";
+    } else {
+      body.style.overflow = "auto";
+      setShowOverlay(false);
+    }
+  });
+
+  const removeMenuOnEscape = (e) => {
+    if (e.key === "Escape") {
+      handleCustomRemove();
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", removeMenuOnEscape);
+
+    return () => {
+      window.removeEventListener("keydown", removeMenuOnEscape);
+    };
+  });
+
+  return (
+    <>
+      <HeaderContainer menuToggle={menuToggle}>
+        <HeaderWrap>
+          <MobileNav>
+            <MobileToggle onClick={handleMenuToggle}>
+              {menuToggle ? (
+                <i className="fas fa-times"></i>
+              ) : (
+                <i className="fas fa-bars" />
+              )}
+            </MobileToggle>
+            {menuToggle && (
+              <MobileMenu>
+                {menu.slice(1, 4).map((menuItem, index) => {
+                  return (
+                    <MenuCard
+                      key={index}
+                      data={menuItem}
+                      event={handleMenuClose}
+                    />
+                  );
+                })}
+              </MobileMenu>
+            )}
+          </MobileNav>
+          <HeaderLogoWrap>
+            <HeaderLogo>
+              <Link href={logo.link}>
+                <a>
+                  <Image
+                    src={logo.image}
+                    alt={logo.imageAlt}
+                    onClick={handleCustomRemove}
+                  />
+                </a>
+              </Link>
+            </HeaderLogo>
+          </HeaderLogoWrap>
+          <HeaderMenu>
+            <MenuWrap>
+              {menu.map((menuItem, index) => {
+                return (
+                  <MenuWrapItem key={index} onClick={handleCustomRemove}>
+                    <ActiveLink href={menuItem.link}>
+                      {menuItem.title}
+                    </ActiveLink>
+                  </MenuWrapItem>
+                );
+              })}
+            </MenuWrap>
+          </HeaderMenu>
+          <CartWrap>
+            <Cart aria-label="open your cart menu">
+              <Image
+                src={cart.icon}
+                alt=" "
+                aria-hidden="true"
+                onClick={handleCartToggle}
+              />
+              {totalProductCount >= 1 && (
+                <CartNumber
+                  aria-label={'You have ${totalProductCount} in your cart'}
+                >
+                  <p>{totalProductCount}</p>
+                </CartNumber>
+              )}
+            </Cart>
+            {cartToggle && <CartMenu />}
+          </CartWrap>
+        </HeaderWrap>
+      </HeaderContainer>
+      {menuToggle && <Overlay event={handleRemove} menuOption />}
+    </>
+  );
+};
+
+export default Header;
