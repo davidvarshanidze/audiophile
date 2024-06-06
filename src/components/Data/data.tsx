@@ -1,4 +1,4 @@
-import x992 from '../../assets/product-xx99-mark-two-headphones/mobile/image-product.jpg'
+import x992 from '../../assets/product-xx99-mark-two-headphones/mobile/image-product.png'
 import x992G1 from '../../assets/product-xx99-mark-two-headphones/mobile/image-gallery-1.jpg'
 import x992G2 from '../../assets/product-xx99-mark-two-headphones/mobile/image-gallery-2.jpg'
 import x992G3 from '../../assets/product-xx99-mark-two-headphones/mobile/image-gallery-3.jpg'
