@@ -1,0 +1,182 @@
+@use '../../variables' as *;
+
+.checkout {
+  padding: $spacer;
+  background-color: $white-200;
+  & ~ .footer {
+    & > .container {
+      display: none;
+    }
+  }
+
+  input + p {
+    text-transform: uppercase;
+    margin-top: $spacer;
+    color: rgba(red, 0.8);
+    display: none;
+  }
+  input.invalid + p {
+    display: block;
+  }
+  input.invalid {
+    border: 2px solid red !important;
+  }
+  .back {
+    color: rgba($dark-200, 0.5);
+    cursor: pointer;
+    user-select: none;
+    font-weight: 500;
+    text-transform: capitalize;
+    max-width: 660px;
+    margin-inline: auto;
+  }
+  .container {
+    background-color: $white;
+    padding: $spacer;
+    border-radius: 8px;
+    margin-top: $spacer;
+    max-width: 660px;
+    margin-inline: auto;
+
+    @include screen(680) {
+      padding: $spacer * 2;
+    }
+
+    h1 {
+      text-transform: uppercase;
+      font-size: 2rem;
+      letter-spacing: 1px;
+    }
+    h2 {
+      letter-spacing: 1px;
+      font-size: 1rem;
+      color: $brown-200;
+      text-transform: uppercase;
+      margin-block: $spacer * 1.5 $spacer;
+    }
+    .label {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: $spacer * 1.5;
+      display: block;
+      input {
+        display: block;
+        margin-top: $spacer * 0.5;
+        padding: 0.75em 1.3em;
+        width: 100%;
+        border: 1px solid #cfcfcf;
+        border-radius: 8px;
+        outline: none;
+
+        &:focus {
+          border: 2px solid $brown-200;
+        }
+        &::placeholder {
+          color: rgba($dark-200, 0.4);
+          font-weight: 700;
+        }
+      }
+    }
+    .method {
+      @include screen(545) {
+        display: grid;
+        grid-template: repeat(2, auto) / repeat(2, 1fr);
+        grid-template-areas: 'text input-one' '. input-two';
+        gap: $spacer;
+      }
+      p {
+        font-weight: 700;
+        font-size: 1rem;
+        letter-spacing: 1px;
+      }
+      label {
+        display: flex;
+        border: 1px solid #cfcfcf;
+        border-radius: 8px;
+        padding: 0.75em 1.3em;
+        align-items: center;
+        @extend p;
+        font-weight: 500;
+        cursor: pointer;
+        margin-block: $spacer;
+        &:has(input:checked) {
+          border: 2px solid $brown-200;
+        }
+
+        input {
+          margin-right: $spacer * 0.7;
+          cursor: pointer;
+          caret-color: $brown-200;
+        }
+      }
+      @include screen(545) {
+        p {
+          grid-area: text;
+        }
+        label {
+          margin-block: 0;
+          width: 100%;
+          justify-self: end;
+          margin-left: auto;
+        }
+        label:nth-of-type(1) {
+          grid-area: input-one;
+        }
+        label:nth-of-type(2) {
+          grid-area: input-two;
+        }
+      }
+    }
+
+    @include screen(545) {
+      .shipping-info,
+      .billing-details {
+        label,
+        h2 {
+          margin-bottom: 0;
+        }
+        h2 {
+          grid-area: header;
+        }
+        label:nth-of-type(1) {
+          grid-area: input-one;
+        }
+        label:nth-of-type(2) {
+          grid-area: input-two;
+        }
+        label:nth-of-type(3) {
+          grid-area: input-three;
+        }
+      }
+      .payment-details {
+        display: grid;
+        grid-template: repeat(2, auto) / repeat(2, 1fr);
+        grid-template-areas: 'header header' 'method method';
+        gap: $spacer;
+
+        h2 {
+          grid-area: header;
+        }
+        .method {
+          grid-area: method;
+        }
+      }
+      .billing-details {
+        display: grid;
+        grid-template: repeat(3, auto) / repeat(2, 1fr);
+        grid-template-areas: 'header header' 'input-one input-two' 'input-three .';
+        gap: $spacer;
+      }
+      .shipping-info {
+        display: grid;
+        grid-template: repeat(4, auto) / repeat(2, 1fr);
+        grid-template-areas: 'header header' 'input-one input-one' 'input-two input-three' 'input-four .';
+        gap: $spacer;
+
+        input:nth-of-type(4) {
+          grid-area: input-four;
+        }
+      }
+    }
+  }
+}

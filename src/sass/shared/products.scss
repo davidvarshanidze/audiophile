@@ -1,0 +1,46 @@
+@use '../variables' as *;
+
+.products {
+  @include screen(850) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacer;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding: $spacer;
+  }
+  .product__main {
+    background-color: $white-300;
+    margin-bottom: $spacer * 3.5;
+    border-radius: 8px;
+    padding: $spacer * 4 $spacer $spacer * 0.5;
+    position: relative;
+    max-width: 290px;
+    margin-inline: auto;
+
+    @include screen(850) {
+      width: 290px;
+      margin-inline: auto;
+    }
+    @include screen(950) {
+      margin: 0;
+    }
+
+    & > img {
+      position: absolute;
+      inset: 0 auto auto 50%;
+      transform: translate(-50%, -40%);
+      width: 109px;
+    }
+    p {
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 1.07px;
+      text-align: center;
+    }
+    button {
+      margin-inline: auto;
+    }
+  }
+}

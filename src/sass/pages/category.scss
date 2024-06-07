@@ -1,0 +1,38 @@
+@use '../variables' as *;
+
+.category {
+  & + .header {
+    background-color: $dark-200;
+  }
+  .container {
+    max-width: 1200px;
+    margin-inline: auto;
+    padding: $spacer;
+
+    @include screen(545) {
+      & > .container {
+        margin-top: $spacer * 4;
+      }
+    }
+    @include screen(850) {
+      &.products {
+        padding-inline: 0;
+      }
+    }
+  }
+
+  .hero-section {
+    padding-block: $spacer * 4;
+    background-color: $dark-200;
+    display: grid;
+    place-content: center;
+    margin-bottom: $spacer * 2;
+
+    h1 {
+      text-transform: uppercase;
+      font-size: 28px;
+      color: $white;
+      letter-spacing: 1px;
+    }
+  }
+}

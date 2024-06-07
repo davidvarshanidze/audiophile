@@ -1,0 +1,97 @@
+@use '../../variables' as *;
+
+.header {
+  background-color: #191919;
+  position: relative;
+  z-index: 3;
+
+  .container {
+    max-width: 1200px;
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacer;
+    border-bottom: 1px solid rgba($white, 0.1);
+
+    @include screen(545) {
+      gap: $spacer * 3;
+      .logo {
+        margin-right: auto;
+      }
+    }
+    @include screen(725) {
+      .logo {
+        margin: 0;
+      }
+      .hamburger {
+        display: none;
+      }
+    }
+    .cart-img {
+      cursor: pointer;
+      position: relative;
+
+      .count {
+        position: absolute;
+        inset: 0 0 auto auto;
+        color: $white;
+        font-weight: 700;
+        background-color: $brown-200;
+        padding: $spacer * 0.5;
+        aspect-ratio: 1 / 1;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        transform: translate(50%, -60%);
+        line-height: 0;
+
+        &:empty {
+          display: none;
+        }
+      }
+    }
+    nav {
+      display: none;
+      gap: $spacer * 2;
+
+      @include screen(725) {
+        display: flex;
+      }
+
+      a {
+        text-decoration: none;
+        text-transform: uppercase;
+        color: #ffffff;
+        font-weight: 700;
+        transition: color 250ms linear;
+        position: relative;
+        isolation: isolate;
+
+        &::after {
+          content: '';
+          position: absolute;
+          inset: auto auto 3px 0;
+          width: 0;
+          height: 5px;
+          background-color: rgba($brown-200, 0.6);
+          z-index: -1;
+          transition: width 200ms linear;
+        }
+
+        &:hover {
+          &::after {
+            width: 80%;
+          }
+        }
+        &.active {
+          color: $brown-200;
+
+          &:hover::after {
+            width: 0;
+          }
+        }
+      }
+    }
+  }
+}
