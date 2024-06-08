@@ -1,105 +1,106 @@
-import React, { ChangeEventHandler } from 'react'
-import ReactDOM from 'react-dom'
+import React, { ChangeEventHandler } from "react";
+import ReactDOM from "react-dom";
 import {
   Form,
   redirect,
   To,
   useNavigate,
   useSearchParams,
-} from 'react-router-dom'
-
-import '../../../sass/pages/checkout/checkout.scss'
-import OrderSuccess from '../../shared/OrderSuccess'
-import { Item } from '../../store/CartContextProvider'
-import Summary from './Summary'
+} from "react-router-dom";
+import "../../../sass/pages/checkout/checkout.scss";
+import OrderSuccess from "../../shared/OrderSuccess";
+import { Item } from "../../store/CartContextProvider";
+import Summary from "./Summary";
 
 export const checkoutAction = async function ({
   request,
 }: {
-  request: Request
+  request: Request;
 }) {
-  const url = request.url
-  const formData = await request.formData()
-  const paymentMethod = formData.get('payment')
-  const userName = formData.get('name')
+  const url = request.url;
+  const formData = await request.formData();
+  const paymentMethod = formData.get("payment");
+  const userName = formData.get("name");
   const params: Item[] = JSON.parse(
-    new URL(url).searchParams.get('items') as string
-  )
+    new URL(url).searchParams.get("items") as string
+  );
   try {
-    let res
-    let paymentUrl
-    if (paymentMethod === 'card') {
+    let res;
+    let paymentUrl;
+    if (paymentMethod === "card") {
       res = await fetch(
-        'https://audiophile-e-commerce-ashy.vercel.app/create-checkout',
+        "https://audiophile-e-commerce-ashy.vercel.app/create-checkout",
         {
-          method: 'POST',
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            items: params.map(item => {
-              return { id: item.name, quantity: item.count }
+            items: params.map((item) => {
+              return { id: item.name, quantity: item.count };
             }),
           }),
-          credentials: 'include',
+          credentials: "include",
         }
-      )
-      const data = await res.json()
-      paymentUrl = data.url
+      );
+      const data = await res.json();
+      paymentUrl = data.url;
     } else {
       res = await fetch(
         `https://audiophile-e-commerce-ashy.vercel.app/create-charge?params=${JSON.stringify(
           params
         )}&name=${userName}`,
-        { credentials: 'include' }
-      )
-      const data = await res.json()
-      paymentUrl = data.hosted_url
+        { credentials: "include" }
+      );
+      const data = await res.json();
+      paymentUrl = data.hosted_url;
     }
     if (!res.ok) {
-      return res.json().then(json => Promise.reject(json))
+      return res.json().then((json) => Promise.reject(json));
     }
-    throw redirect(paymentUrl)
+    throw redirect(paymentUrl);
   } catch (err) {
-    throw err
+    throw err;
   }
-  return null
-}
+  return null;
+};
 const formVal: ChangeEventHandler<HTMLInputElement> = function (e) {
-  let isValid = false
+  let isValid = false;
   switch (e.target.name) {
-    case 'name': {
-      isValid = /^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$/.test(e.target.value)
-      break
+    case "name": {
+      isValid = /^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$/.test(e.target.value);
+      break;
     }
-    case 'address':
-    case 'city': {
-      isValid = /\w+/g.test(e.target.value)
-      break
+    case "address":
+    case "city": {
+      isValid = /\w+/g.test(e.target.value);
+      break;
     }
-    case 'zip-code': {
-      isValid = /^\d{5}(?:[-\s]\d{4})?$/.test(e.target.value)
-      break
+    case "zip-code": {
+      isValid = /^\d{5}(?:[-\s]\d{4})?$/.test(e.target.value);
+      break;
     }
-    case 'country': {
-      isValid = /\w{3,}/.test(e.target.value)
-      break
+    case "country": {
+      isValid = /\w{3,}/.test(e.target.value);
+      break;
     }
-    case 'phone': {
-      isValid = /^[0-9+-]+$/.test(e.target.value)
-      break
+    case "phone": {
+      isValid = /^[0-9+-]+$/.test(e.target.value);
+      break;
     }
   }
   isValid
-    ? e.target.classList.remove('invalid')
-    : e.target.classList.add('invalid')
-}
+    ? e.target.classList.remove("invalid")
+    : e.target.classList.add("invalid");
+};
 const Checkout: React.FC = function () {
-  const navigate = useNavigate()
-  const [searchParams, setSearchParams] = useSearchParams()
+  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  if (searchParams.get('orderSuccess') === 'false') {
-    throw new Error('Something went wrong with your payment. Please try again.')
+  if (searchParams.get("orderSuccess") === "false") {
+    throw new Error(
+      "Something went wrong with your payment. Please try again."
+    );
   }
 
   return (
@@ -200,37 +201,37 @@ const Checkout: React.FC = function () {
           <h2>Payment Details</h2>
           <div className="method">
             <p>Payment Method</p>
-            <label htmlFor="card">
+            <label htmlFor="emoney">
               <input
                 type="radio"
                 name="payment"
-                value="card"
-                id="card"
+                value="emoney"
+                id="emoney"
                 required
               />
-              Pay with card
+              e-Money
             </label>
-            <label htmlFor="crypto">
+            <label htmlFor="cash">
               <input
                 type="radio"
                 name="payment"
-                value="crypto"
-                id="crypto"
+                value="cash"
+                id="cash"
                 required
               />
-              Pay with crypto
+              Cash on Delivery
             </label>
           </div>
         </div>
       </div>
       <Summary />
-      {searchParams.get('ordersuccess') &&
+      {searchParams.get("ordersuccess") &&
         ReactDOM.createPortal(
           <OrderSuccess />,
-          document.getElementById('modal-root')!
+          document.getElementById("modal-root")!
         )}
     </Form>
-  )
-}
+  );
+};
 
-export default Checkout
+export default Checkout;
