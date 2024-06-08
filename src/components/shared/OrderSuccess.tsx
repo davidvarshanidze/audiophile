@@ -1,21 +1,21 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect } from "react";
 
-import { calculateTotal } from './Cart'
-import checkIcon from '../../assets/checkout/icon-order-confirmation.svg'
-import CartContext from '../store/CartContextProvider'
-import Button from '../UI/Button'
-import '../../sass/shared/ordersuccess.scss'
-import { Link } from 'react-router-dom'
+import { calculateTotal } from "./Cart";
+import checkIcon from "../../assets/checkout/icon-order-confirmation.svg";
+import CartContext from "../store/CartContextProvider";
+import Button from "../UI/Button";
+import "../../sass/shared/ordersuccess.scss";
+import { Link } from "react-router-dom";
 
 const OrderSuccess: React.FC = function () {
-  const ctx = useContext(CartContext)
+  const ctx = useContext(CartContext);
 
   useEffect(
     () => () => {
-      ctx.dispatchItem({ action: 'CLEAR', payload: null })
+      ctx.dispatchItem({ action: "CLEAR", payload: null });
     },
     []
-  )
+  );
 
   return (
     <div className="order-success">
@@ -39,14 +39,14 @@ const OrderSuccess: React.FC = function () {
                 </p>
               </>
             ) : (
-              ''
+              ""
             )}
           </div>
           <div className="total">
             <p>Grand Total</p>
             <p>
               $
-              {new Intl.NumberFormat('en-US').format(
+              {new Intl.NumberFormat("en-US").format(
                 Math.round(calculateTotal(ctx.items) * 1.2) + 50
               )}
             </p>
@@ -57,7 +57,7 @@ const OrderSuccess: React.FC = function () {
         </Link>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default OrderSuccess
+export default OrderSuccess;

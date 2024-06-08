@@ -1,8 +1,8 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
 
-import Button from '../UI/Button'
-import '../../sass/shared/likes.scss'
+import Button from "../UI/Button";
+import "../../sass/shared/likes.scss";
 
 const Likes: React.FC<{ data: [string, string, string, string] }> = function ({
   data,
@@ -15,7 +15,7 @@ const Likes: React.FC<{ data: [string, string, string, string] }> = function ({
         <Button className="button-one">see product</Button>
       </Link>
     </div>
-  )
-}
+  );
+};
 
-export default Likes
+export default Likes;

@@ -1,30 +1,30 @@
-import React, { useState, useContext } from 'react'
-import { To, useNavigate } from 'react-router-dom'
-import { nanoid } from 'nanoid'
+import React, { useState, useContext } from "react";
+import { To, useNavigate } from "react-router-dom";
+import { nanoid } from "nanoid";
 
-import Button from '../UI/Button'
-import '../../sass/shared/product_detail.scss'
-import Likes from './Likes'
-import CartContext from '../store/CartContextProvider'
-import { cartImages } from '../Data/data'
-import { motion } from 'framer-motion'
+import Button from "../UI/Button";
+import "../../sass/shared/product_detail.scss";
+import Likes from "./Likes";
+import CartContext from "../store/CartContextProvider";
+import { cartImages } from "../Data/data";
+import { motion } from "framer-motion";
 
 const ProductDetail: React.FC<{
-  img: string
-  newProduct?: boolean
-  title: string
-  cartTitle: string
-  desc: string
-  price: string
-  features: [string, string]
-  box: [number, string][]
-  gallery: [[string, string], [string, string], [string, string]]
-  className: string
+  img: string;
+  newProduct?: boolean;
+  title: string;
+  cartTitle: string;
+  desc: string;
+  price: string;
+  features: [string, string];
+  box: [number, string][];
+  gallery: [[string, string], [string, string], [string, string]];
+  className: string;
   likes: [
     [string, string, string, string],
     [string, string, string, string],
     [string, string, string, string]
-  ]
+  ];
 }> = function ({
   img,
   newProduct = false,
@@ -38,11 +38,11 @@ const ProductDetail: React.FC<{
   likes,
   cartTitle,
 }) {
-  const [cartItems, setCartItems] = useState(1)
-  const navigate = useNavigate()
-  const ctx = useContext(CartContext)
+  const [cartItems, setCartItems] = useState(1);
+  const navigate = useNavigate();
+  const ctx = useContext(CartContext);
 
-  const cartImgUrl = cartImages.find(el => el[0] === className)![1]
+  const cartImgUrl = cartImages.find((el) => el[0] === className)![1];
 
   return (
     <div className="product-detail">
@@ -64,7 +64,7 @@ const ProductDetail: React.FC<{
               <p
                 className="btn"
                 onClick={() => {
-                  setCartItems(val => (val === 1 ? val : val - 1))
+                  setCartItems((val) => (val === 1 ? val : val - 1));
                 }}
               >
                 -
@@ -79,7 +79,7 @@ const ProductDetail: React.FC<{
               <p
                 className="btn"
                 onClick={() => {
-                  setCartItems(val => val + 1)
+                  setCartItems((val) => val + 1);
                 }}
               >
                 +
@@ -89,15 +89,15 @@ const ProductDetail: React.FC<{
               className="button-one"
               onClick={() => {
                 ctx.dispatchItem({
-                  action: 'ADD',
+                  action: "ADD",
                   payload: {
                     name: cartTitle,
                     count: cartItems,
                     price,
                     imgUrl: cartImgUrl,
                   },
-                })
-                setCartItems(1)
+                });
+                setCartItems(1);
               }}
             >
               add to cart
@@ -114,7 +114,7 @@ const ProductDetail: React.FC<{
             <div className="box">
               <h3>in the box</h3>
               <div className="items">
-                {box.map(el => (
+                {box.map((el) => (
                   <p key={nanoid()} className="items_details">
                     <span>{el[0]}x</span> {el[1]}
                   </p>
@@ -129,14 +129,14 @@ const ProductDetail: React.FC<{
           </div>
           <p className="like">You may also like</p>
           <div className="likes">
-            {likes.map(like => (
+            {likes.map((like) => (
               <Likes key={nanoid()} data={like} />
             ))}
           </div>
         </section>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ProductDetail
+export default ProductDetail;

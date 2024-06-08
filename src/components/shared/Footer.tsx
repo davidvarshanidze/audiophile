@@ -1,12 +1,12 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React from "react";
+import { NavLink } from "react-router-dom";
 
-import bestGear from '../../assets/shared/mobile/image-best-gear.jpg'
-import logo from '../../assets/shared/desktop/logo.svg'
-import facebook from '../../assets/social/facebook.svg'
-import instagram from '../../assets/social/instagram.svg'
-import twitter from '../../assets/social/twitter.svg'
-import '../../sass/shared/footer.scss'
+import bestGear from "../../assets/shared/mobile/image-best-gear.jpg";
+import logo from "../../assets/shared/desktop/logo.svg";
+import facebook from "../../assets/social/facebook.svg";
+import instagram from "../../assets/social/instagram.svg";
+import twitter from "../../assets/social/twitter.svg";
+import "../../sass/shared/footer.scss";
 
 const Footer: React.FC = function () {
   return (
@@ -63,7 +63,7 @@ const Footer: React.FC = function () {
         </div>
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
