@@ -11,7 +11,7 @@ const Item: React.FC<{
   name: string;
   price: string;
   count: number;
-}> = function ({ imgUrl, name, price, count }) {
+}> = function({ imgUrl, name, price, count }) {
   const ctx = useContext(CartContext);
   return (
     <div className="cart__item">
@@ -50,7 +50,7 @@ const Item: React.FC<{
 };
 const Cart: React.FC<{
   setIsCartOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}> = function ({ setIsCartOpen }) {
+}> = function({ setIsCartOpen }) {
   const ctx = useContext(CartContext);
   const totalPrice = useMotionValue(0);
   const rounded = useTransform(
@@ -108,7 +108,7 @@ const Cart: React.FC<{
     </motion.div>
   );
 };
-export const calculateTotal = function (
+export const calculateTotal = function(
   items: {
     imgUrl: string;
     name: string;

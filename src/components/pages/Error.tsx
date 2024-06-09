@@ -6,7 +6,7 @@ import memphics from '../../assets/error/memphics_017.svg'
 import clock from '../../assets/error/material-symbols_nest-clock-farsight-analog-outline.svg'
 import '../../sass/pages/error.scss'
 
-const Error: React.FC = function () {
+const Error: React.FC = function() {
   const error: any = useRouteError()
   const navigate = useNavigate()
   const date = new Date()
@@ -32,7 +32,7 @@ const Error: React.FC = function () {
       </div>
       <section className="section-one">
         <div className="container">
-          <p>An error has occured. Don't worry it's not you, it's us 🙂</p>
+          <p>An error has occured. Don't worry it's not you, it's us 🍃</p>
           <button>Alert the developer 💻</button>
           <img src={arrow} alt="arrow" />
         </div>

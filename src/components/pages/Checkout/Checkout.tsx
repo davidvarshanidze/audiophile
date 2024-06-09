@@ -12,7 +12,7 @@ import OrderSuccess from "../../shared/OrderSuccess";
 import { Item } from "../../store/CartContextProvider";
 import Summary from "./Summary";
 
-export const checkoutAction = async function ({
+export const checkoutAction = async function({
   request,
 }: {
   request: Request;
@@ -64,7 +64,7 @@ export const checkoutAction = async function ({
   }
   return null;
 };
-const formVal: ChangeEventHandler<HTMLInputElement> = function (e) {
+const formVal: ChangeEventHandler<HTMLInputElement> = function(e) {
   let isValid = false;
   switch (e.target.name) {
     case "name": {
@@ -93,7 +93,7 @@ const formVal: ChangeEventHandler<HTMLInputElement> = function (e) {
     ? e.target.classList.remove("invalid")
     : e.target.classList.add("invalid");
 };
-const Checkout: React.FC = function () {
+const Checkout: React.FC = function() {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -122,7 +122,7 @@ const Checkout: React.FC = function () {
               onChange={formVal}
               required
             />
-            <p>invalid format!!</p>
+            <p>Invalid format</p>
           </label>
           <label className="label" htmlFor="email">
             Email Address
@@ -132,7 +132,7 @@ const Checkout: React.FC = function () {
               name="email"
               required
             />
-            <p>invalid format!!</p>
+            <p>Invalid format</p>
           </label>
           <label className="label" htmlFor="phone">
             Phone Number
@@ -144,7 +144,7 @@ const Checkout: React.FC = function () {
               name="phone"
               required
             />
-            <p>invalid format!!</p>
+            <p>Invalid format</p>
           </label>
         </div>
         <div className="shipping-info">
@@ -159,7 +159,7 @@ const Checkout: React.FC = function () {
               onChange={formVal}
               required
             />
-            <p>invalid format!!</p>
+            <p>Invalid format</p>
           </label>
           <label className="label" htmlFor="zip-code">
             ZIP Code
@@ -170,7 +170,7 @@ const Checkout: React.FC = function () {
               pattern="^\d{5}(?:[-\s]\d{4})?$"
               name="zip-code"
             />
-            <p>invalid format!!</p>
+            <p>Invalid format</p>
           </label>
           <label className="label" htmlFor="city">
             City
