@@ -11,7 +11,7 @@ const Product: React.FC<{
   desc: string;
   className: string;
   link: string;
-}> = function ({ className, newProduct, img, header, desc, link }) {
+}> = function({ className, newProduct, img, header, desc, link }) {
   return (
     <div className={`product ${className}`}>
       <img
@@ -19,11 +19,11 @@ const Product: React.FC<{
         alt="product"
         className={link.split(" ")[0].toLowerCase()}
       />
-      {newProduct && <p className="new-product">new product</p>}
+      {newProduct && <p className="new-product">New product</p>}
       <h2>{header}</h2>
       <p className="desc">{desc}</p>
       <Link to={link}>
-        <Button className="button-one">see product</Button>
+        <Button className="button-one">See product</Button>
       </Link>
     </div>
   );

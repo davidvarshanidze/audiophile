@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Button from "../UI/Button";
 import "../../sass/shared/likes.scss";
 
-const Likes: React.FC<{ data: [string, string, string, string] }> = function ({
+const Likes: React.FC<{ data: [string, string, string, string] }> = function({
   data,
 }) {
   return (
@@ -12,7 +12,7 @@ const Likes: React.FC<{ data: [string, string, string, string] }> = function ({
       <img className={data[1]} src={data[0]} alt={data[2]} />
       <p>{data[2]}</p>
       <Link to={`/${data[3]}`}>
-        <Button className="button-one">see product</Button>
+        <Button className="button-one">See product</Button>
       </Link>
     </div>
   );

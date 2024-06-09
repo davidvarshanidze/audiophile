@@ -7,7 +7,7 @@ import Button from "../UI/Button";
 import "../../sass/shared/ordersuccess.scss";
 import { Link } from "react-router-dom";
 
-const OrderSuccess: React.FC = function () {
+const OrderSuccess: React.FC = function() {
   const ctx = useContext(CartContext);
 
   useEffect(
@@ -21,7 +21,7 @@ const OrderSuccess: React.FC = function () {
     <div className="order-success">
       <div className="modal">
         <img className="check" src={checkIcon} alt="success" />
-        <p className="title">THANK YOU FOR YOUR ORDER</p>
+        <p className="title">Thank you for your order</p>
         <p className="confirmation">
           You will receive an email confirmation shortly.
         </p>
@@ -53,7 +53,7 @@ const OrderSuccess: React.FC = function () {
           </div>
         </div>
         <Link to="/" replace={true}>
-          <Button className="button-one">back to home</Button>
+          <Button className="button-one">Back to home</Button>
         </Link>
       </div>
     </div>
