@@ -50,13 +50,13 @@ const Footer: React.FC = function () {
           </p>
           <p className="copyright">Copyright 2021. All Rights Reserved</p>
           <div className="social">
-            <a href="https://twitter.com/Keith_Web3">
+            <a href="https://www.facebook.com/">
               <img src={facebook} alt="facebook-icon" />
             </a>
-            <a href="https://twitter.com/Keith_Web3">
+            <a href="https://x.com/home">
               <img src={twitter} alt="twitter-icon" />
             </a>
-            <a href="https://twitter.com/Keith_Web3">
+            <a href="https://www.instagram.com/">
               <img src={instagram} alt="instagram-icon" />
             </a>
           </div>

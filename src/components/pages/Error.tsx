@@ -18,17 +18,6 @@ const Error: React.FC = function() {
         <button className="home-btn" onClick={() => navigate('/')}>
           Go Home
         </button>
-        <nav>
-          <NavLink to="/headphones" replace={true}>
-            Headphones
-          </NavLink>
-          <NavLink to="/speakers" replace={true}>
-            Speakers
-          </NavLink>
-          <NavLink to="/earphones" replace={true}>
-            Earphones
-          </NavLink>
-        </nav>
       </div>
       <section className="section-one">
         <div className="container">
