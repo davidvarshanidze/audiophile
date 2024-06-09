@@ -147,9 +147,7 @@
             }
 
             &:hover {
-              &::after {
-                width: 80%;
-              }
+              color: rgba($brown-200, 0.6);
             }
           }
         }

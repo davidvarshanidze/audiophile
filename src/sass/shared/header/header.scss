@@ -63,10 +63,10 @@
         text-decoration: none;
         text-transform: uppercase;
         color: #ffffff;
-        font-weight: 700;
-        transition: color 250ms linear;
+        font-weight: 500;
         position: relative;
         isolation: isolate;
+        letter-spacing: 1px;
 
         &::after {
           content: '';
@@ -80,9 +80,7 @@
         }
 
         &:hover {
-          &::after {
-            width: 80%;
-          }
+          color: rgba($brown-200, 0.6);
         }
         &.active {
           color: $brown-200;
