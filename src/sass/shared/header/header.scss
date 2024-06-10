@@ -18,6 +18,7 @@
       gap: $spacer * 3;
       .logo {
         margin-right: auto;
+        cursor: pointer;
       }
     }
     @include screen(725) {

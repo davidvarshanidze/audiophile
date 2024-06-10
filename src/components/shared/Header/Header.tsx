@@ -7,6 +7,7 @@ import logo from '../../../assets/shared/desktop/logo.svg'
 import Hamburger from '../../UI/Hamburger'
 import '../../../sass/shared/header/header.scss'
 import CartContext from '../../store/CartContextProvider'
+import Homepage from '../../pages/Homepage'
 
 const Header: React.FC<{
   isNavOpen: 'open' | 'closed'
@@ -19,7 +20,7 @@ const Header: React.FC<{
     <header className="header">
       <div className="container">
         <Hamburger isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />
-        <img className="logo" src={logo} alt="logo" />
+        <img className="logo" src={logo} alt="logo"/>
         <nav>
           <NavLink
             to="/"
