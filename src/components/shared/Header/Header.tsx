@@ -7,7 +7,6 @@ import logo from '../../../assets/shared/desktop/logo.svg'
 import Hamburger from '../../UI/Hamburger'
 import '../../../sass/shared/header/header.scss'
 import CartContext from '../../store/CartContextProvider'
-import Homepage from '../../pages/Homepage'
 
 const Header: React.FC<{
   isNavOpen: 'open' | 'closed'
