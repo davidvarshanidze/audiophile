@@ -16,10 +16,10 @@ app.use(
   })
 )
 
-const stripe = require('stripe')(process.env.STRIPE_KEY)
+const stripe = require('stripe')(process.env.VITE_STRIPE_API_KEY)
 const { Client, resources, Webhook } = require('coinbase-commerce-node')
 
-Client.init(process.env.COINBASE_KEY)
+Client.init(process.env.VITE_COINBASE_API_KEY)
 const { Charge } = resources
 
 const calculateTotal = function (items) {
