@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
 import cartIcon from '../../../assets/shared/desktop/icon-cart.svg'
@@ -19,7 +19,9 @@ const Header: React.FC<{
     <header className="header">
       <div className="container">
         <Hamburger isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />
+        <Link to="/">
         <img className="logo" src={logo} alt="logo"/>
+        </Link>
         <nav>
           <NavLink
             to="/"
