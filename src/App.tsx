@@ -15,6 +15,7 @@ import Speakers from './components/pages/Speakers'
 import ProductDetail from './components/shared/ProductDetail'
 import data from './components/Data/data'
 import PageNotFound from './components/pages/PageNotFound'
+import Error from './components/pages/Error'
 import Checkout, { checkoutAction } from './components/pages/Checkout/Checkout'
 
 const router = createBrowserRouter(
