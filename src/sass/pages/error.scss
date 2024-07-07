@@ -14,6 +14,7 @@
   background-size: 35%;
   position: relative;
   isolation: isolate;
+
   @include screen(874) {
     background-size: 300px;
     padding-top: $spacer * 3;
@@ -32,6 +33,7 @@
       margin-inline: auto;
     }
   }
+
   &::before {
     content: '';
     position: absolute;
@@ -49,6 +51,7 @@
     align-items: flex-start;
     z-index: 2;
     position: relative;
+
     @include screen(400) {
       align-items: center;
       max-width: 1200px;
@@ -64,19 +67,24 @@
       font-size: 1.3rem;
       cursor: pointer;
       transition: transform 200ms linear;
+
       &:hover {
         transform: scale(1.05);
       }
     }
+
     nav {
       display: flex;
       flex-direction: column;
+
       @include screen(400) {
         flex-direction: row;
         gap: $spacer;
       }
+
       margin-left: auto;
       text-align: end;
+
       a {
         text-decoration: none;
         color: #231b3b;
@@ -85,6 +93,7 @@
       }
     }
   }
+
   section {
     max-width: 430px;
     margin-inline: auto;
@@ -93,9 +102,11 @@
       max-width: 1200px;
     }
   }
+
   .section-one {
     margin-top: $spacer * 2;
     margin-bottom: $spacer * -8;
+
     @include screen(800) {
       display: grid;
       column-gap: $spacer * 1.5;
@@ -103,16 +114,19 @@
       align-items: center;
       margin-block: -2 * $spacer;
     }
+
     .container {
       @include screen(800) {
         padding-top: 4 * $spacer;
       }
+
       p {
         text-transform: uppercase;
         font-size: 2rem;
         color: #231b3b;
         line-height: 40px;
       }
+
       button {
         all: unset;
         background-color: #ff7eff;
@@ -126,10 +140,12 @@
         margin-top: $spacer * 1.5;
         cursor: pointer;
         transition: transform 200ms linear;
+
         &:hover {
           transform: scale(1.05) rotate(-3deg);
         }
       }
+
       img {
         transform: translate(30%, -25%);
         width: 80%;
@@ -137,8 +153,10 @@
         z-index: -1;
       }
     }
-    & > img {
+
+    &>img {
       display: none;
+
       @include screen(800) {
         display: block;
         width: 100%;
@@ -147,6 +165,7 @@
       }
     }
   }
+
   .section-two {
     .date {
       display: flex;
@@ -156,11 +175,13 @@
       img {
         width: 2.5rem;
       }
+
       .day {
         color: rgba(35, 27, 59, 0.26);
         font-size: 1.35rem;
       }
     }
+
     .context {
       width: max-content;
       max-width: 240px;
@@ -170,6 +191,7 @@
       transform: rotate(-3deg);
       background-color: $white;
       margin-top: $spacer;
+
       p:first-child {
         background-color: #231b3b;
         color: $white;
@@ -177,6 +199,7 @@
         width: calc(100% + ($spacer * 2));
         transform: translate(-1 * $spacer, -1 * $spacer);
       }
+
       p:last-child {
         overflow: hidden;
         overflow-wrap: break-word;
