@@ -1,30 +1,23 @@
 {
-  "name": "audiophile",
-  "private": true,
+  "name": "audiophille-ecommerce",
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
+    "build": "vite build",
+    "serve": "vite preview"
   },
   "dependencies": {
-    "@vercel/analytics": "^1.3.1",
-    "axios": "^1.7.2",
-    "dotenv": "^16.4.5",
-    "framer-motion": "^10.6.0",
-    "postcss": "^8.4.38",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.9.0",
-    "scss": "^0.2.4"
+    "@hookform/resolvers": "^2.5.1",
+    "libphonenumber-js": "^1.9.19",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
+    "react-hook-form": "^7.6.6",
+    "react-router-dom": "^5.2.0",
+    "styled-components": "^5.3.0",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
-    "@types/react": "^18.0.28",
-    "@types/react-dom": "^18.0.11",
-    "@vitejs/plugin-react": "^3.1.0",
-    "sass": "^1.77.4",
-    "typescript": "^4.9.3",
-    "vite": "^4.2.0"
+    "@vitejs/plugin-react-refresh": "^1.3.1",
+    "vite": "^2.3.0"
   }
 }
