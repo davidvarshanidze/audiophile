@@ -33,7 +33,7 @@ const OrderModal = () => {
             </OrderItem>
             <hr />
             <div className='others-amount'>
-              and{cart.length - 1} other item(s)
+              and {cart.length - 1} other item(s)
             </div>
           </Container>
           <GrandInfo>
